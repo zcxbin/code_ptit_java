@@ -2,28 +2,31 @@ package Cinema;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
 
-public class Category {
+public class Movie implements Comparable<Movie> {
     private String id;
-    private String type_id;
-    private Date dateOnAir;
+    private Date date;
     private String name;
-    private int soTap;
+    private String episodes;
+    private Category category;
 
-    public Category(String id, String type_id, String dateOnAir, String name, int soTap) throws ParseException {
-        this.id = id;
-        this.type_id = type_id;
-        this.dateOnAir = new SimpleDateFormat("dd/MM/yyyy").parse(dateOnAir);
+    public Movie(int id, String date, String name, String episodes, Category category) throws ParseException {
+        this.id = String.format("P%03d", id);
+        this.date = new SimpleDateFormat("dd/MM/yyyy").parse(date);
         this.name = name;
-        this.soTap = soTap;
+        this.episodes = episodes;
+        this.category = category;
     }
 
-    public String getType_id() {
-        return type_id;
+    @Override
+    public String toString() {
+        return id + " " + category.toString() + " " + new SimpleDateFormat("dd/MM/yyyy").format(date) + " " + name + " " + episodes;
     }
 
-    public String toString(){
-        return id + " " + 
+    @Override
+    public int compareTo(Movie other) {
+        return this.date.compareTo(other.date);
     }
+
 }
