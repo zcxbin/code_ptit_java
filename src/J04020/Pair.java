@@ -9,9 +9,10 @@ public class Pair<T extends Number, U extends Number> {
         this.second = second;
     }
 
-    public boolean isPrime(){
+    public boolean isPrime() {
         return isPrime(first.intValue()) && isPrime(second.intValue());
     }
+
     private boolean isPrime(int n) {
         if (n < 2) return false;
         for (int i = 2; i <= Math.sqrt(n); i++) {
@@ -20,7 +21,7 @@ public class Pair<T extends Number, U extends Number> {
         return true;
     }
 
-    public String toString(){
+    public String toString() {
         return first.toString() + " " + second.toString();
     }
 }
